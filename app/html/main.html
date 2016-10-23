@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Myl2</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <script src="../lib/vue.js"></script>
+</head>
+<body>
+  <div id="content" ref="content" @drop.prevent="dropFile" @dragover.prevent @dragenter.prevent >
+    <div ref="header" class="header">
+      <div class="header-btn close-btn" :title="mess.CLOSE_APP" @click="closeApp"></div>
+      <div class="header-btn aot-btn" :class="{'on-top':config.alwaysOnTop}" :title="mess.TOGGLE_ALWAYS_ON_TOP" @click="toggleAlwaysOnTop"></div>
+      <div class="header-btn opensetting-btn" :title="mess.OPEN_SETTING" @click="openSetting"></div>
+      <div class="header-btn add-cate-btn" :title="mess.ADD_CATEGORY" @click="addNewCateDialog"></div>
+    </div>
+    <div class="cate-section" @drop="DDCateWrap">
+      <div ref="catesec">
+        <myl-cate v-for="c of cates" :cate="c" :selected="c === selectedCate" ></myl-cate>
+      </div>
+    </div>
+    <div class="item-section" @drop="DDItemWrap">
+      <div ref="itemsec">
+        <myl-item v-for="item of selectedItems" :item="item"></myl-item>
+      </div>
+    </div>
+    <add-new-cate></add-new-cate>
+    <notify-mess></notify-mess>
+    <cate-menu></cate-menu>
+    <item-menu></item-menu>
+    <br-selector></br-selector>
+    <item-editor></item-editor>
+  </div>
+  <script>
+    require('../js/model/root.js');
+  </script>
+</body>
+</html>

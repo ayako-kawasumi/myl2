@@ -1,0 +1,331 @@
+html,body{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font:13px "メイリオ";
+  width:100%;
+  height:100%;
+  overflow:hidden;
+}
+div, input, select, textarea{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  outline:none;
+  border:none;
+}
+div{
+  word-wrap:break-word;
+}
+#content{
+  height:100%;
+  width:100%;
+}
+.header{
+  -webkit-app-region:drag;
+  height:22px;
+  background-color:rgb(255,233,233);
+}
+.header-btn{
+  float:right;
+  -webkit-app-region:no-drag;
+  height:100%;
+  width:22px;
+  border-radius:6px;
+}
+.close-btn{
+  background-color:rgb(255,120,150);
+}
+.aot-btn{
+  transition:background .2s ease;
+  background-color:darkcyan;
+}
+.on-top{
+  background-color:springgreen;
+}
+.opensetting-btn{
+  background-color:gold;
+}
+.add-cate-btn{
+  background-color:rgb(100,125,255);
+}
+.cate-section{
+  width:35%;
+  background-color:rgb(25,255,255);
+  float:left;
+  min-height:20px;
+  text-align:center;
+  height:calc(100% - 22px);
+  overflow-y:hidden;
+}
+.item-section{
+  width:65%;
+  background-color:rgb(125,155,255);
+  float:left;
+  min-height:20px;
+  height:calc(100% - 22px);
+  overflow-y:hidden;
+}
+
+.modal-layer{
+  height:100%;
+  width:100%;
+  position:fixed;
+  top:0;
+  left:0;
+}
+.add-new-cate-modal{
+  background-color:rgba(100,100,100,.5);
+  text-align:center;
+  padding-top:50px;
+}
+
+.add-new-cate-enter-active, .add-new-cate-leave-active{
+  transition:opacity 0.2s ease;
+  opacity:1;
+}
+.add-new-cate-enter, .add-new-cate-leave-active{
+  opacity:0;
+}
+.new-cate-input{
+  width:90%;
+  height:30px;
+  vertical-align:middle;
+  font-size:20px;
+  text-align:center;
+  border:none;
+  border-radius:2px;
+}
+
+/*a cate*/
+  .cate{
+    -webkit-user-select:none;
+    transition:color .3s ease;
+    min-height:20px;
+    background-color:rgb(255,255,255);
+    word-wrap:break-word;
+    cursor:default;
+  }
+  .cate:hover{
+    background-color:rgb(255,200,255) !important;
+  }
+  .cate:nth-child(even){
+    background-color:rgb(235,255,233);
+  }
+  .cate.selected{
+    color:rgb(255,133,200);
+  }
+
+/*end a cate*/
+
+/* a item*/
+.item{
+  -webkit-user-select:none;
+  min-height:18px;
+  background-color:rgb(255,255,253);
+  cursor:default;
+}
+.item:hover{
+  background-color:rgb(205,125,203) !important;
+}
+.item:nth-child(even){
+  background-color:rgb(222,255,253);
+}
+.item-icon{
+  height:22px;
+  width:22px;
+  background-repeat:no-repeat;
+  display:inline-block;
+  vertical-align:middle;
+  background-position:center;
+}
+.item-body{
+  vertical-align:middle;
+  display:inline-block;
+  width:calc(100% - 25px);
+}
+/*end a item*/
+
+/*notify*/
+.notify{
+  z-index:1000;
+  position:fixed;
+  bottom:0;
+  right:0;
+  overflow:hidden;
+  white-space:pre;
+  border-radius:2px 0px 0px 0px;
+  padding:2px 2px 0 5px;
+  font-size:16px;
+  background-color:rgba(55, 25,55,0.7);
+  pointer-events: none;
+}
+.notify.info{
+  color:white;
+}
+.notify.warn{
+  color:lightgreen;
+}
+.notify.error{
+  color:red;
+}
+.notify-enter-active, .notify-leave-active{
+  transition:all .5s ease;
+  right:0;
+}
+.notify-enter, .notify-leave-active{
+  right:-100%;
+}
+
+/* cate-men*/
+.cate-menu, .item-menu{
+  position:absolute;
+  top:0;
+  left:0;
+  font-size:12px;
+  width:100px;
+  border-radius:2px;
+  background-color:white;
+  padding:3px;
+  text-align:center;
+}
+.cate-menu-name{
+  font-weight:bold;
+  background-color:rgb(255,233,233);
+}
+.menu-item{
+  cursor:pointer;
+}
+.menu-item:hover{
+  font-weight:bold;
+  background-color:rgb(233,233,255);
+}
+
+.cxtmenu-enter-active,.cxtmenu-leave-active{
+  transition:all .3s ease;
+  opacity:1;
+}
+.cxtmenu-enter, .cxtmenu-leave-active{
+  opacity:0;
+}
+.cate-name-input{
+  font-family:"メイリオ";
+  height:100%;
+  width:100%;
+  background-color:transparent;
+  text-align:center;
+}
+
+/*item-editor*/
+.item-editor-wrap{
+  z-index:100;
+  position:fixed;
+  top:0;
+  left:0;
+  height:100%;
+  width:100%;
+  background-color:rgba(0,0,0,0.5);
+}
+.item-editor{
+  position:absolute;
+  top:0;
+  left:0;
+  bottom:0;
+  right:0;
+  height:180px;
+  width:310px;
+  margin:auto;
+  background-color:rgb(233,233,233);
+  border-radius:2px;
+  padding:2px;
+}
+.editor-enter-active, .editor-leave-active{
+  transition:all 0.3s ease;
+  opacity:1;
+}
+.editor-enter, .editor-leave-active{
+  opacity:0;
+}
+.editor-btns{
+  position:absolute;
+  bottom:0;
+  right:0;
+}
+.editor-regist, .editor-cancel{
+  cursor:pointer;
+  padding:4px;
+  margin:2px 4px;
+  font-size:13px;
+  border-radius:2px;
+  background-color:gray;
+  color:white;
+}
+.editor-line{
+  border-bottom:solid 1px gray;
+}
+.editor-icon-wrap{
+  width:10%;
+  display:inline-block;
+}
+.editor-icon-caption{
+  width:90%;
+  display:inline-block;
+}
+.editor-name{
+  display:inline-block;
+  text-align:center;
+  width:25%;
+}
+.editor-field{
+  display:inline-block;
+  width:75%;
+}
+input.editor-field{
+  background-color:lightyellow;
+}
+.sc-key{
+  display:none;
+}
+.sc-key-ui{
+  width:35px;
+  text-align:center;
+  background-color:rgb(150,150,150);
+  display:inline-block;
+  margin:1px 3px;
+  position:relative;
+  vertical-align:middle;
+  border-radius:2px;
+  transition:background .2s ease; 
+}
+.sc-key:checked + .sc-key-ui{
+  background-color:darkorange;
+}
+.sc-ikey{
+  text-align:center;
+  vertical-align: middle;
+  width:80px;
+  height:20px;
+  background-color:lightyellow;
+}
+.clear-shortcut{
+  background-color:rgb(255, 200,200);
+  border-radius:3px;
+  width:20px;
+  height:20px;
+  vertical-align: middle;
+}
+
+.impitem{
+  animation-name: impanime;
+  animation-duration: 0.3s;
+  animation-timing-function: ease;
+  animation-iteration-count: 1;
+}
+@keyframes impanime{
+  50%{
+    transform: scale(0.8);
+  }
+  100%{
+    transform: scale(1);  
+  }
+}

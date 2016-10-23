@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    html,body{
+      height:100%;
+      width:100%;
+      margin:0;
+      padding:0;
+      font-family:"メイリオ";
+      box-sizing:border-box;
+      overflow:hidden;
+      text-align:center;
+      background-color:rgb(233,233,255);
+    }
+    dl, dt,dd{
+      margin:0;
+      padding:0;
+    }
+    input,select{
+      outline:none;
+    }
+    input,div,dl,dt,dd{
+      box-sizing:border-box;
+    }
+    .header{
+      -webkit-app-region:drag;
+      height:25px;
+      color:whtie;
+      background-color:gray;
+    }
+  </style>
+  <script src="../lib/jscolor.js"></script>
+  <script src="../lib/vue.js"></script>
+</head>
+<body>
+  <div id="content">
+    <div class="header">Myl2 version<span class="ver">{{version}}</span>Setting</div>
+    <dl>
+      <dt>{{mess.LANG}}</dt>
+      <dd>
+        <label>{{mess.ENGLISH}}<input v-model="config.lang" name="lang" value="en" type="radio"></label>
+        <label>{{mess.JAPANESE}}<input v-model="config.lang" name="lang" value="ja" type="radio"></label>
+      </dd>
+      <dt>{{mess.FONTSIZE}}</dt>
+      <dd>
+        <div><input type="number" min="5" max="30" v-model.number="config.fontSize">px</div>
+        <div class="sample-config">{{mess.SAMPLE_FONT}}</div>
+      </dd>
+    </dl>
+  <div class="btns">
+    <input type="button" value="Save(Ctrl+S)" @click="save">
+    <input type="button" value="Close(Esc)" @click="close">
+  </div>
+  </div>
+  <script>
+    require('../js/setting');
+  </script>
+</body>
+</html>

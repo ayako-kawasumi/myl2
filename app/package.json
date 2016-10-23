@@ -1,0 +1,20 @@
+{
+  "name": "myl2",
+  "version": "1.0.0",
+  "description": "MY List 2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "app",
+    "launcher"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "fs-promise": "^0.5.0",
+    "lodash": "^4.16.4",
+    "moment": "^2.15.1"
+  }
+}
