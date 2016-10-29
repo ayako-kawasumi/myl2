@@ -125,6 +125,9 @@ div{
   background-color:rgb(255,255,253);
   cursor:default;
 }
+.mm-move{
+  transition:transform .2s;
+}
 .item:hover{
   background-color:rgb(205,125,203) !important;
 }
@@ -188,6 +191,7 @@ div{
   background-color:white;
   padding:3px;
   text-align:center;
+  box-shadow: 0 0 3px 3px rgba(20,20,20,.5);
 }
 .cate-menu-name{
   font-weight:bold;
