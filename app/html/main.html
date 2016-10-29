@@ -23,7 +23,11 @@
     </div>
     <div class="item-section" @drop="DDItemWrap">
       <div ref="itemsec">
-        <myl-item v-for="item in (selectedCate || {}).items" :item="item"></myl-item>
+        <div v-for="c in cates" v-if="c === selectedCate">
+          <transition-group name="mm">
+            <myl-item v-for="item in c.items" :item="item" :key="item"></myl-item>
+          </transition-group>
+        </div>
       </div>
     </div>
     <add-new-cate></add-new-cate>
