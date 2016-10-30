@@ -97,6 +97,9 @@ var model = {
       this.selectedCate = newCate;
     },
     DDCate(src, dest, after){
+      if(src === dest){
+        return;
+      }
       var si = this.cates.indexOf(src);
       this.cates.splice(si, 1);
       if(!dest){
@@ -120,6 +123,9 @@ var model = {
       this.DDCate(dragCate);
     },
     DDItem(src, dest, after){
+      if(src===dest){
+        return;
+      }
       var items = this.selectedCate.items;
       var si = items.indexOf(src);
       items.splice(si, 1);
@@ -236,9 +242,6 @@ var model = {
     removeCate(cate){
       var ind = this.cates.indexOf(cate);
       this.cates.splice(ind, 1);
-      if(cate === this.selectedCate){
-        this.selectedCate = null;
-      }
     },
     loadCate(){
       var saveFile = appVars.SAVEFILE;

@@ -30,11 +30,13 @@ module.exports = {
         return;
       }
       ev.stopPropagation();
+      var dragItem = appVars.dragItem;
+      appVars.dragItem = null;
       var after;
       var ih = this.$refs.item.clientHeight /2;
       var point = ev.offsetY;
       after = (ih < point);
-      evHub.$emit('dd-item', appVars.dragItem, this.item, after);
+      evHub.$emit('dd-item', dragItem, this.item, after);
     }
   }
 };
