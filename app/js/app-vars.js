@@ -5,6 +5,7 @@ var path = require('path');
 var DATADIR = app.getPath('userData');
 var ROOTDIR = remote.getGlobal('ROOTDIR');
 var HTMLDIR = path.join(ROOTDIR, 'html');
+var CSSDIR = path.join(ROOTDIR, 'css');
 var SAVEFILE = path.join(DATADIR, 'myl-data.json');
 var CONFIGFILE = path.join(DATADIR, 'myl-config.json');
 var VERSION = app.getVersion();
@@ -15,6 +16,7 @@ module.exports = {
   DATADIR,
   ROOTDIR,
   HTMLDIR,
+  CSSDIR,
   SAVEFILE,
   CONFIGFILE,
   cateDrag,

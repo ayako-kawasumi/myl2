@@ -19,28 +19,31 @@ if(already){
 var gip = require('./js/gip-wrapper');
 
 var ipcMain = el.ipcMain;
-var fromCharCode = String.fromCharCode;
-function btoa(str){
-  return new Buffer(str.toString(), 'binary').toString('base64');
-}
-ipcMain.on('get-icon', (ev,itemPath)=>{
-  var iconStr, iconBuf;
-  try{
-    iconBuf = gip.getSmallIcon(itemPath);
-    iconStr = `data:image/png;base64,${btoa(fromCharCode.apply(null, iconBuf))}`;
-  }catch(e){
-    console.error(e);
+ipcMain.on('get-icon',(()=>{
+  var fromCharCode = String.fromCharCode;
+  function btoa(str){
+    return new Buffer(str.toString(), 'binary').toString('base64');
   }
-  ev.sender.send('return-icon', iconStr);
-});
-var globalShortcut =el.globalShortcut;
+  return (ev,itemPath)=>{
+    var iconStr, iconBuf;
+    try{
+      iconBuf = gip.getSmallIcon(itemPath);
+      iconStr = `data:image/png;base64,${btoa(fromCharCode.apply(null, iconBuf))}`;
+    }catch(e){
+      console.error(e);
+    }
+    ev.sender.send('return-icon', iconStr);
+  };
+})());
+
+var gsh =el.globalShortcut;
 ipcMain.on('set-global-shortcut', (ev, keypath)=>{
-  globalShortcut.unregisterAll();
+  gsh.unregisterAll();
   if(!keypath){
     return;
   }
   var sender = ev.sender;
-  globalShortcut.register(keypath,()=>sender.send('call-global'));
+  gsh.register(keypath,()=>sender.send('call-global'));
 });
 
 global.ROOTDIR = __dirname;

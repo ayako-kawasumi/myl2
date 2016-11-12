@@ -32,6 +32,7 @@ class MylConfig{
     this.minimize = false;
     this.fontSize = 13;
     this.globalSCKey = '';
+    this.theme = {};
     if(opts){
       _.merge(this,opts);
     }
@@ -206,7 +207,11 @@ var model = {
         scManager.importAll(this.cates);
         evHub.$on('press-key', scManager.emit);
         return this.adjustWindow();
-      }).then(()=> thisWindow.show());
+      }).then(()=>{
+        var setTheme = require('../set-theme');
+        setTheme(this.config);
+        thisWindow.show();
+      });
     },
     openSetting(){
       var wopt = {

@@ -24,7 +24,6 @@ div{
 .header{
   -webkit-app-region:drag;
   height:22px;
-  background-color:rgb(255,233,233);
 }
 .header-btn{
   float:right;
@@ -51,7 +50,6 @@ div{
 }
 .cate-section{
   width:35%;
-  background-color:rgb(25,255,255);
   float:left;
   min-height:20px;
   text-align:center;
@@ -60,7 +58,6 @@ div{
 }
 .item-section{
   width:65%;
-  background-color:rgb(125,155,255);
   float:left;
   min-height:20px;
   height:calc(100% - 22px);
@@ -102,20 +99,9 @@ div{
     -webkit-user-select:none;
     transition:color .3s ease;
     min-height:20px;
-    background-color:rgb(255,255,255);
     word-wrap:break-word;
     cursor:default;
   }
-  .cate:hover{
-    background-color:rgb(255,200,255) !important;
-  }
-  .cate:nth-child(even){
-    background-color:rgb(235,255,233);
-  }
-  .cate.selected{
-    color:rgb(255,133,200);
-  }
-
 /*end a cate*/
 
 /* a item*/
@@ -127,12 +113,6 @@ div{
 }
 .mm-move{
   transition:transform .2s;
-}
-.item:hover{
-  background-color:rgb(205,125,203) !important;
-}
-.item:nth-child(even){
-  background-color:rgb(222,255,253);
 }
 .item-icon{
   height:22px;

@@ -1,0 +1,31 @@
+.header{
+  background-color:<%=header%>;
+}
+.cate-section{
+  background-color:<%=cateSection%>;
+}
+.item-section{
+  background-color:<%=itemSection%>;
+}
+
+.cate{
+  background-color:<%=cate%>;
+}
+.cate:hover{
+  background-color:<%=cateHover%>!important;
+}
+.cate:nth-child(even){
+  background-color:<%=cateEven%>;
+}
+.cate.selected{
+  color:<%=cateSelected%>;
+}
+.item{
+  background-color:<%=item%>;
+}
+.item:hover{
+  background-color:<%=itemHover%> !important;
+}
+.item:nth-child(even){
+  background-color:<%=itemEven%>;
+}
