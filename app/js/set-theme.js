@@ -23,7 +23,7 @@ var setTheme = conf=>{
   }
   var theme = _.defaults(conf.theme,defaultTheme);
   var style = cssTemple(theme);
-  var styleEl = document.createElement('style');
+  var styleEl = document.getElementById('theme');
   styleEl.innerText = style;
   document.head.appendChild(styleEl);
 };

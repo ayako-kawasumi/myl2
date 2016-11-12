@@ -74,6 +74,10 @@ var model = {
     'config.lang'(v){
       this.mess = appMessages[v];
     },
+    'config.theme'(v){
+      var setTheme = require('../set-theme');
+      setTheme(v);
+    },
     selectedCate(v){
       var ind = _.indexOf(this.cates, v);
       localStorage.setItem('selected', ind);
