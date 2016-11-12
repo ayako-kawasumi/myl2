@@ -9,7 +9,7 @@
   "author": "yoshiyuki mizogami",
   "license": "MIT",
   "devDependencies": {
-    "electron-packager": "^8.1.0",
+    "electron-packager": "^8.2.0",
     "gulp": "^3.9.1"
   }
 }
