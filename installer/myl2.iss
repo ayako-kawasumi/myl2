@@ -10,7 +10,7 @@ begin
   Result := True;
 end;
 [Setup]
-SetupIconFile=..\imgdoc\myl2.ico
+SetupIconFile=..\img\logo.ico
 OutputBaseFilename=Myl2-installer
 PrivilegesRequired=lowest
 AppName=Myl2
@@ -26,11 +26,11 @@ SolidCompression=yes
 OutputDir=..\dist
 
 [Files]
-Source: "..\pack\myl-win32-ia32\*"; DestDir: "{app}"; Flags:recursesubdirs;
+Source: "..\pack\myl2-win32-x64\*"; DestDir: "{app}"; Flags:recursesubdirs ignoreversion;
 
 [Icons]
-Name: "{userdesktop}\Myl" ;Filename: "{app}\myl.exe"
-Name: "{userstartup}\Myl" ;Filename: "{app}\myl.exe"
+Name: "{userdesktop}\Myl" ;Filename: "{app}\myl2.exe"
+Name: "{userstartup}\Myl" ;Filename: "{app}\myl2.exe"
 
 [Run]
-Filename:"{app}\myl.exe"; Flags:postinstall nowait;
+Filename:"{app}\myl2.exe"; Flags:postinstall nowait;

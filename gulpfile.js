@@ -22,10 +22,11 @@ gulp.task('pack', ['clear'],clbk=>{
     platform:'win32',
     out:'pack',
     version:EL_VERSION,
-    icon:'img/logo.ico'
+    icon:'img/logo.ico',
+    overwrite:true
   };
   elpack(opt, (e)=>{
-    assert(!e, e);
+    assert(e, e);
     clbk();  
   });
 });
