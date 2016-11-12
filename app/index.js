@@ -1,7 +1,21 @@
 var el = require('electron');
 var app = el.app;
 var path = require('path');
-var already = app.makeSingleInstance(()=>{});
+var mainWindow;
+
+var already = app.makeSingleInstance(()=>{
+  if(!mainWindow){
+    return;
+  }
+  if(mainWindow.isMinimized()){
+    mainWindow.restore();
+  }
+  mainWindow.focus();
+});
+if(already){
+  app.quit();
+}
+
 var gip = require('./js/gip-wrapper');
 
 var ipcMain = el.ipcMain;
@@ -29,11 +43,7 @@ ipcMain.on('set-global-shortcut', (ev, keypath)=>{
   globalShortcut.register(keypath,()=>sender.send('call-global'));
 });
 
-if(already){
-  app.quit();
-}
 global.ROOTDIR = __dirname;
-var mainWindow;
 
 app.on('ready', ()=>{
   var wopt = {
