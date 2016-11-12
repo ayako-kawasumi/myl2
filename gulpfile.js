@@ -5,7 +5,15 @@ var fs = require('fs');
 var assert = require('assert');
 var EL_VERSION = '1.4.6';
 
-gulp.task('pack', clbk=>{
+gulp.task('clear',()=>{
+  var del = require('del');
+  return del([
+    'app/node_modules/lodash/!(lodash.js|package.json)',
+    'app/node_modules/moment/!(moment.js|package.json)'
+  ]);
+});
+
+gulp.task('pack', ['clear'],clbk=>{
   var elpack = require('electron-packager');
   var opt = {
     asar:true,

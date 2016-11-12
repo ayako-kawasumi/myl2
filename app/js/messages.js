@@ -54,7 +54,7 @@ module.exports = {
     CMD:'コマンド',
     COPY_PATH:'パスをコピー',
     BY:'起動元',
-    OPEN_PARENT:'親フォルダ',
+    OPEN_PARENT:'上のフォルダ',
     ALLOW_ONLY_ONE_FILE:'ここでは一つのファイルだけ受け入れます',
     SHORTCUTKEY:'ｼｮｰﾄｶｯﾄ',
     SAMPLE_FONT:'サンプル:あいうえおかきくけこ',
