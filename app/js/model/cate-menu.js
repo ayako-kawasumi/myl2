@@ -39,7 +39,16 @@ module.exports = {
   },
   methods:{
     shortcut(ev){
-
+      var kc = ev.which;
+      var method = {
+        //R
+        82:this.rename
+      }[kc];
+      if(!method){
+        return;
+      }
+      ev.preventDefault();
+      method();
     },
     showMe(ev, targetVm){
       this.targetVm = targetVm;

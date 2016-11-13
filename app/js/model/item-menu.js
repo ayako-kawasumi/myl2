@@ -18,8 +18,17 @@ module.exports = {
     };
   },
   created(){
-    this.$on('press-key', this.keyShortcut);
+    this.$on('press-key', this.shortcut);
     evHub.$on('show-item-menu', this.showMe);
+  },
+  watch:{
+    show(v){
+      if(v){
+        evHub.addLayer(this);
+      }else{
+        evHub.removeLayer(this);
+      }
+    }
   },
   computed:{
     top(){
@@ -30,8 +39,21 @@ module.exports = {
     }
   },
   methods:{
-    keyShortcut(){
-      
+    shortcut(ev){
+      var kc = ev.which;
+      var method = {
+        //C
+        67:this.copyPath,
+        //E
+        69:this.edit,
+        //O
+        79:this.openParent
+      }[kc];
+      if(!method){
+        return;
+      }
+      ev.preventDefault();
+      method();
     },
     showMe(ev, targetVm){
       this.targetVm = targetVm;
