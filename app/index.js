@@ -1,5 +1,5 @@
 var el = require('electron');
-var app = el.app;
+var {app,ipcMain} = el;
 var path = require('path');
 var mainWindow;
 
@@ -18,7 +18,6 @@ if(already){
 
 var gip = require('./js/gip-wrapper');
 
-var ipcMain = el.ipcMain;
 ipcMain.on('get-icon',(()=>{
   var fromCharCode = String.fromCharCode;
   function btoa(str){

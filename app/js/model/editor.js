@@ -32,9 +32,18 @@ module.exports = {
       item:{scKey:{}}
     };
   },
+  watch:{
+    show(v){
+      if(v){
+        evHub.addLayer(this);
+      }else{
+        evHub.removeLayer(this);
+      }
+    }
+  },
   created(){
     evHub.$on('edit-item', this.editItem);
-    evHub.$on('press-key', this.pressKey);
+    this.$on('press-key', this.pressKey);
   },
   methods:{
     editItem(vm){

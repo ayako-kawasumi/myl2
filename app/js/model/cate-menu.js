@@ -17,7 +17,17 @@ module.exports = {
     };
   },
   created(){
+    this.$on('press-key', this.shortcut);
     evHub.$on('show-cate-menu', this.showMe);
+  },
+  watch:{
+    show(v){
+      if(v){
+        evHub.addLayer(this);
+      }else{
+        evHub.removeLayer(this);
+      }
+    }
   },
   computed:{
     top(){
@@ -28,6 +38,9 @@ module.exports = {
     }
   },
   methods:{
+    shortcut(ev){
+
+    },
     showMe(ev, targetVm){
       this.targetVm = targetVm;
       this.x = ev.clientX - OFFSET;

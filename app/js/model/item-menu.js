@@ -18,6 +18,7 @@ module.exports = {
     };
   },
   created(){
+    this.$on('press-key', this.keyShortcut);
     evHub.$on('show-item-menu', this.showMe);
   },
   computed:{
@@ -29,6 +30,9 @@ module.exports = {
     }
   },
   methods:{
+    keyShortcut(){
+      
+    },
     showMe(ev, targetVm){
       this.targetVm = targetVm;
       this.x = ev.clientX - OFFSET;

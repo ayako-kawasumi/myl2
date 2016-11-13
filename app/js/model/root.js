@@ -1,4 +1,5 @@
 const MINHEIGHT = 230;
+const NOTFOUND = -1;
 var shortcutReg = /.lnk$/i;
 var _ = require('lodash');
 var openItem = require('../open-item');
@@ -56,6 +57,7 @@ var model = {
     mess:{}
   },
   created(){
+    evHub.addLayer(this);
     evHub.$on('add-new-cate', this.addNewCate);
     evHub.$on('open-item', this.openItem);
     evHub.$on('open-parent', this.openParent);
@@ -65,6 +67,7 @@ var model = {
     evHub.$on('dd-cate', this.DDCate);
     evHub.$on('dd-item', this.DDItem);
     evHub.$on('dd-item-to-cate', this.DDItemToCate);
+    this.$on('press-key', this.categoryJump);
     this.init();
   },
   watch:{
@@ -82,6 +85,9 @@ var model = {
       var ind = _.indexOf(this.cates, v);
       localStorage.setItem('selected', ind);
       this.adjustWindow();
+    },
+    cates(){
+      Vue.nextTick(this.adjustWindow);
     }
   },
   computed:{
@@ -90,6 +96,24 @@ var model = {
     }
   },
   methods:{
+    searchCategory(key, from){
+      var findex = this.cates.findIndex((c,i)=>
+        i > from &&  c.name.substr(0,1).toLowerCase() === key
+      );
+      if(findex === NOTFOUND){
+        if(from !== 0){
+          return this.searchCategory(key, 0);
+        }
+        return;
+      }
+      this.selectedCate = this.cates[findex];
+    },
+    categoryJump(ev, force0){
+      var cursor = force0?-1:this.cates.indexOf(this.selectedCate);
+      /*start search from next index*/
+      var key = ev.key.toLowerCase();
+      this.searchCategory(key, cursor);
+    },
     pressKey(ev){
       evHub.$emit('press-key', ev);
     },

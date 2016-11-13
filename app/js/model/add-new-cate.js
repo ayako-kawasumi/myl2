@@ -14,7 +14,16 @@ module.exports = {
   },
   created(){
     evHub.$on('show-add-new-cate-dialog', this.showMe);
-    evHub.$on('press-key', this.shortCut);
+    this.$on('press-key', this.shortCut);
+  },
+  watch:{
+    show(v){
+      if(v){
+        evHub.addLayer(this);
+      }else{
+        evHub.removeLayer(this);
+      }
+    }
   },
   methods:{
     focusInput(){
