@@ -2,6 +2,16 @@ var _ = require('lodash');
 var alphaMatch = /^[A-Z]$/;
 var evHub = require('./ev-hub');
 var iconGetter = require('../icon-getter');
+class ShortCut{
+  constructor(obj){
+    (!obj) && (obj = {}); 
+    this.shift = 
+    this.ctrl = 
+    this.alt = 
+    this.key = '';
+    _.defaults(this, obj);
+  }
+}
 module.exports = {
   name:'ItemEditorModel',
   template:'<transition name="editor">'+
@@ -17,7 +27,8 @@ module.exports = {
           '<label><input class="sc-key" v-model="item.scKey.ctrl" type="checkbox"><span class="sc-key-ui">Ctrl</span></label>'+
           '<label><input class="sc-key" v-model="item.scKey.alt" type="checkbox"><span class="sc-key-ui">Alt</span></label>'+
           '<label><input class="sc-key" v-model="item.scKey.shift" type="checkbox"><span class="sc-key-ui">Shift</span></label>'+
-          '<input maxlength="10" v-model="item.scKey.key" class="sc-ikey" type="text" @keydown.prevent.stop="inputKey"><input class="clear-shortcut" :title="$parent.mess.CLEAR_SHORTCUT" type="button" value="x" @click="clearShortCut"></div>'+
+          '<input maxlength="10" v-model="item.scKey.key" class="sc-ikey" type="text" @keydown.prevent.stop="inputKey">'+
+          '<input class="clear-shortcut" :title="$parent.mess.CLEAR_SHORTCUT" type="button" value="x" @click="clearShortCut"></div>'+
         '<div class="editor-btns">'+
           '<input class="editor-regist" type="button" value="Save(Ctrl+S)" @click="regist">'+
           '<input class="editor-cancel" type="button" value="Cancel(ESC)" @click="closeEditor" >'+
@@ -29,7 +40,7 @@ module.exports = {
     return {
       show:false,
       itemVm:null,
-      item:{scKey:{}}
+      item:{scKey:new ShortCut()}
     };
   },
   watch:{
@@ -50,6 +61,7 @@ module.exports = {
       this.show = true;
       this.itemVm = vm;
       this.item = JSON.parse(JSON.stringify(vm.item));
+      this.item.scKey = new ShortCut(this.item.scKey);
     },
     scCheck(){
       var sc = this.item.scKey;
@@ -127,12 +139,7 @@ module.exports = {
       this.item.scKey.key = key;
     },
     clearShortCut(){
-      this.item.scKey = {
-        alt:'',
-        ctrl:'',
-        shift:'',
-        key:''
-      };
+      this.item.scKey = new ShortCut();
     }
   }
 };

@@ -41,7 +41,7 @@ module.exports = {
   methods:{
     shortcut(ev){
       var kc = ev.which;
-      var method = {
+      var sc = {
         //C
         67:this.copyPath,
         //E
@@ -49,11 +49,11 @@ module.exports = {
         //O
         79:this.openParent
       }[kc];
-      if(!method){
+      if(!sc){
         return;
       }
       ev.preventDefault();
-      method();
+      sc();
     },
     showMe(ev, targetVm){
       this.targetVm = targetVm;
@@ -87,7 +87,7 @@ module.exports = {
     },
     copyPath(){
       this.closeMe();
-      var cb = require('electron').clipboard;
+      var {clipboard:cb} = require('electron');
       cb.writeText(this.targetVm.item.path);
     }
   }

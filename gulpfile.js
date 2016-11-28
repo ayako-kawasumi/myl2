@@ -3,7 +3,7 @@ var gulp = require('gulp');
 var path = require('path');
 var fs = require('fs');
 var assert = require('assert');
-var EL_VERSION = '1.4.6';
+var EL_VERSION = '1.4.8';
 
 gulp.task('clear',()=>{
   var del = require('del');
@@ -25,9 +25,8 @@ gulp.task('pack', ['clear'],clbk=>{
     icon:'img/logo.ico',
     overwrite:true
   };
-  elpack(opt, (e)=>{
-    assert(e, e);
-    clbk();  
+  elpack(opt, ()=>{
+    clbk();
   });
 });
 gulp.task('build', clbk=>{
