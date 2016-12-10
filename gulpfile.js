@@ -3,7 +3,11 @@ var gulp = require('gulp');
 var path = require('path');
 var fs = require('fs');
 var assert = require('assert');
-var EL_VERSION = '1.4.8';
+
+var getElectronVersionVersion = ()=>{
+  var exec = require('child_process').execSync;
+  return exec('electron -v').toString().replace(/[v\r\n]/g, '');
+};
 
 gulp.task('clear',()=>{
   var del = require('del');
@@ -22,11 +26,12 @@ gulp.task('pack', ['clear'],clbk=>{
     dir:'app',
     platform:'win32',
     out:'pack',
-    version:EL_VERSION,
+    version:getElectronVersionVersion(),
     icon:'img/logo.ico',
     overwrite:true
   };
-  elpack(opt, ()=>{
+  elpack(opt, (e)=>{
+    (e) && (console.error(e));
     clbk();
   });
 });

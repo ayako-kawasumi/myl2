@@ -12,5 +12,8 @@
     "del": "^2.2.2",
     "electron-packager": "^8.3.0",
     "gulp": "^3.9.1"
+  },
+  "dependencies": {
+    "electron-packager": "^8.4.0"
   }
 }
